@@ -11,15 +11,22 @@ import UIKit
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var cocktails: [Cocktail] = []
+    var cocktailSearch: [Cocktail] = []
     let jsonparser = JsonParser()
     let detailSegueID = "DetailSegue"
     let searchBar: UISearchBar = UISearchBar()
     var cocktailTableView: UITableView!
+    var searchActive : Bool = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Search Cocktail"
+
         cocktails = jsonparser.returnJsonAsCocktailArray()
+        self.cocktailSearch = self.cocktails
         createTableView()
+        self.hideKeyboardWhenTappedAround()
     }
 
     func createTableView() {
@@ -31,11 +38,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchBar.backgroundImage = UIImage()
         searchBar.backgroundColor = .black
         searchBar.delegate = self
-        searchBar.showsCancelButton = true
         self.view.addSubview(searchBar)
         
         //self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        
         
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         let displayWidth: CGFloat = self.view.frame.width
@@ -51,15 +59,30 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.hideKeyboardWhenTappedAround()
-
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        if let searchText = searchBar.text, !searchText.isEmpty {
+            self.cocktailSearch = cocktailSearch.filter { cocktail in
+                return (cocktail.name.lowercased().contains(searchText.lowercased()))
+            }
+        } else {
+            self.cocktailSearch = self.cocktails
+        }
+        self.cocktailTableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
     }
     
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer =     UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = true
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
@@ -68,13 +91,30 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cocktails.count
+        if(!searchActive)
+        {
+            return cocktails.count
+        }
+        else
+        {
+            return cocktailSearch.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel!.text = "\(cocktails[indexPath.row].name)"
-        cell.imageView?.image = UIImage(named: cocktails[indexPath.row].id)
+
+        if(!searchActive){
+            cell.textLabel!.text = "\(cocktails[indexPath.row].name)"
+            cell.imageView?.image = UIImage(named: cocktails[indexPath.row].id)
+            cell.selectionStyle = .none
+        }
+        else
+        {
+            cell.textLabel!.text = "\(cocktailSearch[indexPath.row].name)"
+            cell.imageView?.image = UIImage(named: cocktailSearch[indexPath.row].id)
+            cell.selectionStyle = .none
+        }
         return cell
     }
     
@@ -97,9 +137,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if segue.identifier == detailSegueID {
             destination?.id = cocktails[cocktailIndex!].id
             destination?.descriptionPlain = cocktails[cocktailIndex!].descriptionPlain
-            
         }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
 }
