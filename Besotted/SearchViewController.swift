@@ -36,12 +36,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchBar.placeholder = " Search..."
         searchBar.sizeToFit()
         searchBar.backgroundImage = UIImage()
-        searchBar.backgroundColor = .black
+        searchBar.backgroundColor = .gray
         searchBar.delegate = self
         self.view.addSubview(searchBar)
         
         //self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
         
         
@@ -63,7 +63,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         if let searchText = searchBar.text, !searchText.isEmpty {
-            self.cocktailSearch = cocktailSearch.filter { cocktail in
+            self.cocktailSearch = cocktails.filter { cocktail in
                 return (cocktail.name.lowercased().contains(searchText.lowercased()))
             }
         } else {
