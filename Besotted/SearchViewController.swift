@@ -27,8 +27,28 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.cocktailSearch = self.cocktails
         createTableView()
         self.hideKeyboardWhenTappedAround()
+        addToolbarToSearchBarKeyboard()
     }
 
+    func addToolbarToSearchBarKeyboard() {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        
+        let actionButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(donePressed))
+        actionButton.tintColor = UIColor.black
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, actionButton], animated: false)
+        
+        toolBar.isUserInteractionEnabled = true
+        toolBar.sizeToFit()
+        searchBar.inputAccessoryView = toolBar
+    }
+    
+    @objc func donePressed() {
+        view.endEditing(true)
+    }
+    
     func createTableView() {
         searchBar.searchBarStyle = UISearchBar.Style.prominent
         let searchBarHeight: CGFloat = 40
@@ -137,6 +157,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if segue.identifier == detailSegueID {
             destination?.id = cocktails[cocktailIndex!].id
             destination?.descriptionPlain = cocktails[cocktailIndex!].descriptionPlain
+            destination?.name = cocktails[cocktailIndex!].name
+            destination?.glass = cocktails[cocktailIndex!].servedIn.text
+            destination?.ingredients = cocktails[cocktailIndex!].ingredients
+            
         }
     }
 }

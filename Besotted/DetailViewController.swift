@@ -12,7 +12,11 @@ class DetailViewController: UIViewController {
 
     var id = String()
     var descriptionPlain = String()
+    var name = String()
+    var glass = String()
+    var ingredients = [Ingredients]()
     
+    var lightBlue = UIColor(red: 240.0/255.0, green: 248.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,18 @@ class DetailViewController: UIViewController {
     
 
     func createUI() {
+        
+        let cocktailName = UILabel()
+        cocktailName.text = name
+        cocktailName.font = UIFont.preferredFont(forTextStyle: .footnote)
+        cocktailName.font = UIFont.boldSystemFont(ofSize: 30)
+        cocktailName.textColor = .red
+        cocktailName.textAlignment = .center
+        view.addSubview(cocktailName)
+        cocktailName.translatesAutoresizingMaskIntoConstraints = false
+        cocktailName.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        cocktailName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        
         let cocktailImage = UIImageView()
         cocktailImage.image = UIImage(named: id)
         view.addSubview(cocktailImage)
@@ -31,34 +47,27 @@ class DetailViewController: UIViewController {
         cocktailImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
         cocktailImage.widthAnchor.constraint(equalToConstant: 200).isActive = true
         cocktailImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cocktailImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        cocktailImage.topAnchor.constraint(equalTo: cocktailName.bottomAnchor).isActive = true
         
         let cocktailDesc = UILabel()
         cocktailDesc.text = descriptionPlain
+        cocktailDesc.backgroundColor = lightBlue
+        cocktailDesc.layer.cornerRadius = 5
+        cocktailDesc.lineBreakMode = .byWordWrapping
+        cocktailDesc.numberOfLines = 3
         view.addSubview(cocktailDesc)
         cocktailDesc.translatesAutoresizingMaskIntoConstraints = false
         cocktailDesc.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cocktailDesc.topAnchor.constraint(equalTo: cocktailImage.bottomAnchor).isActive = true
-        cocktailDesc.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        cocktailDesc.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        print(cocktailDesc.text!)
+        cocktailDesc.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        cocktailDesc.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        	
+        let cocktailGlass = UILabel()
+        cocktailGlass.text = "Served in: " + glass
+        cocktailGlass.backgroundColor = lightBlue
+        view.addSubview(cocktailGlass)
+        cocktailGlass.translatesAutoresizingMaskIntoConstraints = false
+        cocktailGlass.topAnchor.constraint(equalTo: cocktailDesc.bottomAnchor, constant: 15).isActive = true
+        cocktailGlass.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
     }
-    
-    
-    
-    
-    /*
-    
-     whiskyImage.layer.masksToBounds = true
-     whiskyImage.layoutIfNeeded()
-     whiskyLabel.translatesAutoresizingMaskIntoConstraints = false
-     whiskyImage.translatesAutoresizingMaskIntoConstraints = false
-     whiskyImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
-     whiskyImage.widthAnchor.constraint(equalToConstant: (view.frame.width/2-15)).isActive = true
-     whiskyImage.topAnchor.constraint(equalTo: vodkaImage.bottomAnchor, constant: 10).isActive = true
-     whiskyImage.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
-     whiskyLabel.centerXAnchor.constraint(equalTo: whiskyImage.centerXAnchor).isActive = true
-     whiskyLabel.centerYAnchor.constraint(equalTo: whiskyImage.centerYAnchor).isActive = true
-    */
-
 }

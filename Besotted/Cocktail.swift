@@ -12,7 +12,6 @@ struct Cocktails: Decodable {
     var cocktails: [Cocktail]
 }
 
-
 struct Cocktail: Decodable {
     var id:                 String
     var name:               String

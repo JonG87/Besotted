@@ -35,7 +35,6 @@ extension CocktailPickerView: UIPickerViewDelegate {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 150))
         
         let cocktailImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 135))
-        //cocktailImage.image = UIImage(named: "cocktails/a-veranda-moment(20)")
         cocktailImage.image = UIImage(named: cocktails[row].id)
         view.addSubview(cocktailImage)
         
