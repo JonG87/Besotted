@@ -14,6 +14,7 @@ class DiscoverViewController: UIViewController {
     let jsonparser = JsonParser()
     var cocktailPickerView: CocktailPickerView! = nil
     var rotationAngle: CGFloat!
+    var liquerType: String!
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -38,6 +39,32 @@ class DiscoverViewController: UIViewController {
         createUI()
     }
     
+    @objc func liquerImageTap(recognizer: UIGestureRecognizer) {
+        
+        switch recognizer.view?.tag {
+        case 0:
+            liquerType = "gin"
+            print(liquerType!)
+        case 1:
+            liquerType = "vodka"
+            print(liquerType!)
+        case 2:
+            liquerType = "tequila"
+            print(liquerType!)
+        case 3:
+            liquerType = "whisky"
+            print(liquerType!)
+        case 4:
+            liquerType = "rum"
+            print(liquerType!)
+        case 5:
+            liquerType = "cognac"
+            print(liquerType!)
+        default:
+            print("silly")
+        }
+    }
+    
     func createUI() {
         
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -54,7 +81,6 @@ class DiscoverViewController: UIViewController {
         discoverLabel.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(discoverLabel)
         discoverLabel.centerXAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.centerXAnchor).isActive = true
-        //discoverLabel.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor, constant: 25).isActive = true
         discoverLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
         
@@ -70,6 +96,8 @@ class DiscoverViewController: UIViewController {
         scrollView.addSubview(cocktailPicker)
         let cocktailPickerY = cocktailPicker.frame.origin.y
         
+        
+                
         //Because of the rotation(CGAffineTransform) of the cocktail picker, we have to get cocktailPicker.frame.origin.y in order for the label to be underneath it directly.
         let baseLiquerLabel = UILabel(frame: CGRect(x: view.frame.width/2 - 125, y: cocktailPickerY + 175, width: 250, height: 30))
         baseLiquerLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
@@ -78,9 +106,10 @@ class DiscoverViewController: UIViewController {
         baseLiquerLabel.textAlignment = .center
         baseLiquerLabel.text = "Base Liquer"
         scrollView.addSubview(baseLiquerLabel)
+        
 
         
-        
+        //Gin
         let ginImage = UIImageView()
         ginImage.layer.cornerRadius = 20
         ginImage.image = UIImage(named: "gin_juniper_berries")
@@ -93,6 +122,10 @@ class DiscoverViewController: UIViewController {
         ginImage.addSubview(ginLabel)
         scrollView.addSubview(ginImage)
         
+        ginImage.isUserInteractionEnabled = true
+        ginImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(liquerImageTap)))
+        
+        ginImage.tag = 0
         ginImage.layer.masksToBounds = true
         ginImage.layoutIfNeeded()
         ginImage.translatesAutoresizingMaskIntoConstraints = false
@@ -104,6 +137,8 @@ class DiscoverViewController: UIViewController {
         ginLabel.centerXAnchor.constraint(equalTo: ginImage.centerXAnchor).isActive = true
         ginLabel.centerYAnchor.constraint(equalTo: ginImage.centerYAnchor).isActive = true
         
+        
+        //Vodka
         let vodkaImage = UIImageView()
         vodkaImage.layer.cornerRadius = 20
         vodkaImage.image = UIImage(named: "wheat_vodka")
@@ -116,6 +151,10 @@ class DiscoverViewController: UIViewController {
         vodkaImage.addSubview(vodkaLabel)
         scrollView.addSubview(vodkaImage)
         
+        vodkaImage.isUserInteractionEnabled = true
+        vodkaImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(liquerImageTap)))
+        
+        vodkaImage.tag = 1
         vodkaImage.layer.masksToBounds = true
         vodkaImage.layoutIfNeeded()
         vodkaLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -127,6 +166,7 @@ class DiscoverViewController: UIViewController {
         vodkaLabel.centerYAnchor.constraint(equalTo: vodkaImage.centerYAnchor).isActive = true
         vodkaLabel.centerXAnchor.constraint(equalTo: vodkaImage.centerXAnchor).isActive = true
 
+        //Tequila
         let tequilaImage = UIImageView()
         tequilaImage.layer.cornerRadius = 20
         tequilaImage.image = UIImage(named: "agave_tequila")
@@ -139,6 +179,10 @@ class DiscoverViewController: UIViewController {
         tequilaImage.addSubview(tequilaLabel)
         scrollView.addSubview(tequilaImage)
         
+        tequilaImage.isUserInteractionEnabled = true
+        tequilaImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(liquerImageTap)))
+        
+        tequilaImage.tag = 2
         tequilaImage.layer.masksToBounds = true
         tequilaImage.layoutIfNeeded()
         tequilaLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -150,7 +194,7 @@ class DiscoverViewController: UIViewController {
         tequilaLabel.centerXAnchor.constraint(equalTo: tequilaImage.centerXAnchor).isActive = true
         tequilaLabel.centerYAnchor.constraint(equalTo: tequilaImage.centerYAnchor).isActive = true
         
-        //barley_whisky
+        //Whisky
         let whiskyImage = UIImageView()
         whiskyImage.layer.cornerRadius = 20
         whiskyImage.image = UIImage(named: "barley_whisky")
@@ -163,6 +207,10 @@ class DiscoverViewController: UIViewController {
         whiskyImage.addSubview(whiskyLabel)
         scrollView.addSubview(whiskyImage)
         
+        whiskyImage.isUserInteractionEnabled = true
+        whiskyImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(liquerImageTap)))
+        
+        whiskyImage.tag = 3
         whiskyImage.layer.masksToBounds = true
         whiskyImage.layoutIfNeeded()
         whiskyLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -174,7 +222,7 @@ class DiscoverViewController: UIViewController {
         whiskyLabel.centerXAnchor.constraint(equalTo: whiskyImage.centerXAnchor).isActive = true
         whiskyLabel.centerYAnchor.constraint(equalTo: whiskyImage.centerYAnchor).isActive = true
         
-        //sugar_cane_rum
+        //Rum
         let rumImage = UIImageView()
         rumImage.layer.cornerRadius = 20
         rumImage.image = UIImage(named: "sugar_cane_rum")
@@ -187,6 +235,10 @@ class DiscoverViewController: UIViewController {
         rumImage.addSubview(rumLabel)
         scrollView.addSubview(rumImage)
         
+        rumImage.isUserInteractionEnabled = true
+        rumImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(liquerImageTap)))
+        
+        rumImage.tag = 4
         rumImage.layer.masksToBounds = true
         rumImage.layoutIfNeeded()
         rumLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -211,6 +263,10 @@ class DiscoverViewController: UIViewController {
         cognacImage.addSubview(cognacLabel)
         scrollView.addSubview(cognacImage)
         
+        cognacImage.isUserInteractionEnabled = true
+        cognacImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(liquerImageTap)))
+        
+        cognacImage.tag = 5
         cognacImage.layer.masksToBounds = true
         cognacImage.layoutIfNeeded()
         cognacLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -222,6 +278,8 @@ class DiscoverViewController: UIViewController {
         cognacLabel.centerXAnchor.constraint(equalTo: cognacImage.centerXAnchor).isActive = true
         cognacLabel.centerYAnchor.constraint(equalTo: cognacImage.centerYAnchor).isActive = true
         
+        
+        //Popular Drinks
         let popularLabel = UILabel()
         popularLabel.text = "Popular Drinks"
         popularLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
@@ -398,4 +456,17 @@ class DiscoverViewController: UIViewController {
         peachCosmoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         peachCosmoLabel.centerXAnchor.constraint(equalTo: peachCosmo.centerXAnchor).isActive = true
     }
+    
 }
+
+/**override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let destination = segue.destination as? DetailViewController
+    let cocktailIndex = cocktailTableView.indexPathForSelectedRow?.row
+    print(cocktailIndex as Any)
+    if segue.identifier == detailSegueID {
+        destination?.id = cocktails[cocktailIndex!].id
+        destination?.descriptionPlain = cocktails[cocktailIndex!].descriptionPlain
+        destination?.name = cocktails[cocktailIndex!].name
+        destination?.glass = cocktails[cocktailIndex!].servedIn.text
+        destination?.ingredients = cocktails[cocktailIndex!].ingredients
+**/

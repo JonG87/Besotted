@@ -22,6 +22,10 @@ extension CocktailPickerView: UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return cocktails.count
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print()
+    }
 }
 
 extension CocktailPickerView: UIPickerViewDelegate {
@@ -50,3 +54,19 @@ extension CocktailPickerView: UIPickerViewDelegate {
         return view
     }
 }
+
+
+
+/**
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ let destination = segue.destination as? DetailViewController
+ let cocktailIndex = cocktailTableView.indexPathForSelectedRow?.row
+ print(cocktailIndex as Any)
+ if segue.identifier == detailSegueID {
+ destination?.id = cocktails[cocktailIndex!].id
+ destination?.descriptionPlain = cocktails[cocktailIndex!].descriptionPlain
+ destination?.name = cocktails[cocktailIndex!].name
+ destination?.glass = cocktails[cocktailIndex!].servedIn.text
+ destination?.ingredients = cocktails[cocktailIndex!].ingredients
+ **/
+
