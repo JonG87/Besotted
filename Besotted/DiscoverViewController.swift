@@ -45,6 +45,7 @@ class DiscoverViewController: UIViewController {
         case 0:
             liquerType = "gin"
             print(liquerType!)
+            performSegue(withIdentifier: "liquerType", sender: self)
         case 1:
             liquerType = "vodka"
             print(liquerType!)
