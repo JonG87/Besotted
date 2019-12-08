@@ -8,7 +8,8 @@
 
 import Foundation
 
-class JsonParser {   
+class JsonParser {
+    
     func returnJsonAsCocktailArray() -> [Cocktail] {
         var cocktailArray: [Cocktail] = []
         if let path = Bundle.main.url(forResource: "Cocktails", withExtension: "json") {

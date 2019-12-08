@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class DiscoverViewController: UIViewController {
 
     var cocktails: [Cocktail] = []
@@ -15,6 +16,8 @@ class DiscoverViewController: UIViewController {
     var cocktailPickerView: CocktailPickerView! = nil
     var rotationAngle: CGFloat!
     var liquerType: String!
+    let lcvc = LiquerCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+
     
     lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -25,6 +28,7 @@ class DiscoverViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
         //setupScrollView()
         //createUI()
     }
@@ -40,27 +44,31 @@ class DiscoverViewController: UIViewController {
     }
     
     @objc func liquerImageTap(recognizer: UIGestureRecognizer) {
-        
         switch recognizer.view?.tag {
         case 0:
             liquerType = "gin"
-            print(liquerType!)
-            performSegue(withIdentifier: "liquerType", sender: self)
+            lcvc.liquerType = liquerType
+            navigationController?.pushViewController(lcvc, animated: true)
         case 1:
             liquerType = "vodka"
-            print(liquerType!)
+            lcvc.liquerType = liquerType
+            navigationController?.pushViewController(lcvc, animated: true)
         case 2:
             liquerType = "tequila"
-            print(liquerType!)
+            lcvc.liquerType = liquerType
+            navigationController?.pushViewController(lcvc, animated: true)
         case 3:
             liquerType = "whisky"
-            print(liquerType!)
+            lcvc.liquerType = liquerType
+            navigationController?.pushViewController(lcvc, animated: true)
         case 4:
             liquerType = "rum"
-            print(liquerType!)
+            lcvc.liquerType = liquerType
+            navigationController?.pushViewController(lcvc, animated: true)
         case 5:
             liquerType = "cognac"
-            print(liquerType!)
+            lcvc.liquerType = liquerType
+            navigationController?.pushViewController(lcvc, animated: true)
         default:
             print("silly")
         }

@@ -23,51 +23,12 @@
                     <navigationItem key="navigationItem" id="0j7-yD-SKj"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="8Gz-E8-M4c" kind="show" identifier="liquerType" id="7eg-Cb-YbB"/>
+                        <segue destination="F02-ja-hyM" kind="show" identifier="liquerTypeSegue" id="qAf-Ub-Z2n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYR-Zc-55Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="654"/>
-        </scene>
-        <!--Liquer Type Search-->
-        <scene sceneID="sO2-cD-sIr">
-            <objects>
-                <viewController title="Liquer Type Search" id="8Gz-E8-M4c" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H3Y-4w-LYV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iB0-Mq-i0m">
-                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aXS-Ee-HBp">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SDY-AR-WjN">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aJC-ZI-grx">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="YgX-CP-jyU"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="xgR-ia-5b1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5dB-8i-664" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2000.8" y="407.94602698650675"/>
+            <point key="canvasLocation" x="1302" y="654"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QhW-Ov-t4P">
@@ -84,6 +45,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SzM-37-hQh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="495" y="654"/>
+        </scene>
+        <!--Liquer Collection View Controller-->
+        <scene sceneID="8xZ-Fk-JLG">
+            <objects>
+                <collectionViewController id="F02-ja-hyM" customClass="LiquerCollectionViewController" customModule="Besotted" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lwF-ed-9AK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4fy-jA-RhZ">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LiquerCell" id="aN0-vu-2cF" customClass="LiquerCollectionViewCell" customModule="Besotted" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VYT-Ei-UTW">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionViewCellContentView>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="F02-ja-hyM" id="eYM-ie-RQ3"/>
+                            <outlet property="delegate" destination="F02-ja-hyM" id="8qf-Xc-SZm"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="moO-7P-hk9"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mCo-vg-PQn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2233" y="654"/>
         </scene>
     </scenes>
     <resources>
