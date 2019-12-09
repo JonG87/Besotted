@@ -18,8 +18,19 @@ class LiquerCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.white
-        
+        // self.clearsSelectionOnViewWillAppear = false
+        self.collectionView!.register(LiquerCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView.reloadData()
+        cocktailLiquerType.removeAll()
+        self.title = "Search by " + liquerType
+
         cocktails = jsonparser.returnJsonAsCocktailArray()
         
         for cocktail in cocktails{
@@ -27,14 +38,12 @@ class LiquerCollectionViewController: UICollectionViewController, UICollectionVi
                 cocktailLiquerType.append(cocktail)
             }
         }
-        // self.clearsSelectionOnViewWillAppear = false
-        self.collectionView!.register(LiquerCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2 - 2, height: collectionView.frame.width/2 + 50)
+        return CGSize(width: collectionView.frame.width/3 - 2, height: collectionView.frame.width/2)
     }
 
     func collectionView(_ collectionView: UICollectionView,

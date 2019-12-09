@@ -14,7 +14,6 @@ class LiquerCollectionViewCell: UICollectionViewCell {
         let iv = UIImageView()
         iv.frame = CGRect(x: 0, y: 0, width: 75, height: 75)
         iv.translatesAutoresizingMaskIntoConstraints = false
-        //iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 12
         return iv
@@ -23,11 +22,14 @@ class LiquerCollectionViewCell: UICollectionViewCell {
     var titleLabel:UILabel = {
         let label = UILabel(frame: CGRect(x:100, y: 30, width: UIScreen.main.bounds.width , height: 40))
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
         label.numberOfLines = 0
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textColor = UIColor.red
+        label.adjustsFontSizeToFitWidth = true
         return label
+        
     }()
  
     override init(frame: CGRect) {
@@ -36,12 +38,6 @@ class LiquerCollectionViewCell: UICollectionViewCell {
         bg.clipsToBounds = true
         bg.layer.cornerRadius = 12
 
-//        super.init(frame: .zero)
-//        self.addSubview(self.bg)
-
-
-
-        
         super.init(frame: frame)
         //self.addSubview(self.titleLabel)
         self.addSubview(self.bg)
@@ -50,21 +46,14 @@ class LiquerCollectionViewCell: UICollectionViewCell {
         self.bg.widthAnchor.constraint(equalTo: self.contentView.widthAnchor).isActive = true
         self.bg.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, constant: -20).isActive = true
 
-        //self.bg.rightAnchor.constraint(equalTo: self.contentView.rightAnchor).isActive = true
-        //self.bg.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-
         self.addSubview(self.titleLabel)
         self.titleLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        self.titleLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor).isActive = true
+        self.titleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+       // self.titleLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor).isActive = true
         self.titleLabel.widthAnchor.constraint(equalToConstant: self.bg.frame.width).isActive = true
         self.titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
+        }
 
-        
-    }
-    
-
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

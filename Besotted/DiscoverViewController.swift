@@ -66,7 +66,7 @@ class DiscoverViewController: UIViewController {
             lcvc.liquerType = liquerType
             navigationController?.pushViewController(lcvc, animated: true)
         case 5:
-            liquerType = "cognac"
+            liquerType = "brandy"
             lcvc.liquerType = liquerType
             navigationController?.pushViewController(lcvc, animated: true)
         default:
