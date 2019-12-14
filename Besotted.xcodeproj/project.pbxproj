@@ -27,6 +27,7 @@
 		31B6C4D12230AACC00EE1303 /* CocktailPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B6C4D02230AACC00EE1303 /* CocktailPickerView.swift */; };
 		A9287127239BFC4C001C453F /* LiquerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9287126239BFC4C001C453F /* LiquerCollectionViewController.swift */; };
 		A928712B239C5802001C453F /* LiquerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A928712A239C5802001C453F /* LiquerCollectionViewCell.swift */; };
+		A928712D23A44582001C453F /* LiquerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A928712C23A44582001C453F /* LiquerDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		31B6C4D02230AACC00EE1303 /* CocktailPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailPickerView.swift; sourceTree = "<group>"; };
 		A9287126239BFC4C001C453F /* LiquerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquerCollectionViewController.swift; sourceTree = "<group>"; };
 		A928712A239C5802001C453F /* LiquerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquerCollectionViewCell.swift; sourceTree = "<group>"; };
+		A928712C23A44582001C453F /* LiquerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquerDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				31B6C4D02230AACC00EE1303 /* CocktailPickerView.swift */,
 				31893C3022A0D2B000DA0E6A /* SearchViewController.swift */,
 				31893C3222A4A31C00DA0E6A /* DetailViewController.swift */,
+				A928712C23A44582001C453F /* LiquerDetailViewController.swift */,
 				313F4F9E2228ED6F0052EB4A /* BarFridgeViewController.swift */,
 				A9287126239BFC4C001C453F /* LiquerCollectionViewController.swift */,
 				A928712A239C5802001C453F /* LiquerCollectionViewCell.swift */,
@@ -312,6 +315,7 @@
 			files = (
 				31893C3322A4A31C00DA0E6A /* DetailViewController.swift in Sources */,
 				313F4F992228ECDF0052EB4A /* DiscoverViewController.swift in Sources */,
+				A928712D23A44582001C453F /* LiquerDetailViewController.swift in Sources */,
 				313F4F9F2228ED6F0052EB4A /* BarFridgeViewController.swift in Sources */,
 				31893C3122A0D2B000DA0E6A /* SearchViewController.swift in Sources */,
 				A928712B239C5802001C453F /* LiquerCollectionViewCell.swift in Sources */,

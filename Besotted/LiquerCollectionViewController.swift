@@ -15,6 +15,8 @@ class LiquerCollectionViewController: UICollectionViewController, UICollectionVi
     let jsonparser = JsonParser()
     var cocktails: [Cocktail] = []
     var cocktailLiquerType: [Cocktail] = []
+    let liquerDetailSegueID = "LiquerDetailSegue"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,10 +88,20 @@ class LiquerCollectionViewController: UICollectionViewController, UICollectionVi
         return cell
     }
     
-    
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Discover", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DetailLiquerVC") as! LiquerDetailViewController
+            vc.id = cocktailLiquerType[indexPath.row].id
+            vc.descriptionPlain = cocktailLiquerType[indexPath.row].descriptionPlain
+            vc.name = cocktailLiquerType[indexPath.row].name
+            vc.glass = cocktailLiquerType[indexPath.row].servedIn.text
+            vc.ingredients = cocktailLiquerType[indexPath.row].ingredients
+        self.navigationController?.pushViewController(vc, animated: true)
+
+    }
     
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -117,6 +129,4 @@ class LiquerCollectionViewController: UICollectionViewController, UICollectionVi
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
     }
-    
-
 }

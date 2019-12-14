@@ -76,10 +76,29 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="moO-7P-hk9"/>
+                    <connections>
+                        <segue destination="NCr-dM-RAB" kind="show" identifier="LiquerDetailSegue" id="b8I-cj-iHh"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCo-vg-PQn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2233" y="654"/>
+            <point key="canvasLocation" x="2134" y="654"/>
+        </scene>
+        <!--Liquer Detail View Controller-->
+        <scene sceneID="fSV-hZ-uHl">
+            <objects>
+                <viewController storyboardIdentifier="DetailLiquerVC" id="NCr-dM-RAB" customClass="LiquerDetailViewController" customModule="Besotted" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="72e-oZ-uwS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="RrA-il-cF9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zOa-CW-l7Z"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o3T-Nx-X22" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2951" y="654"/>
         </scene>
     </scenes>
     <resources>
